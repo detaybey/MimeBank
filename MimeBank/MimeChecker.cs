@@ -35,13 +35,18 @@ namespace MimeBank
             Buffer = new byte[maxBufferSize];
         }
 
+        public FileHeader GetFileHeader(Stream stream)
+        {
+            stream.Read(Buffer, 0, maxBufferSize);
+            return this.List.FirstOrDefault(mime => mime.Check(Buffer));
+        }
+
         public FileHeader GetFileHeader(string file)
         {
-            using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
-                fs.Read(Buffer, 0, maxBufferSize);
+                return GetFileHeader(stream);
             }
-            return this.List.FirstOrDefault(mime => mime.Check(Buffer));
         }
     }
 }
