@@ -32,4 +32,4 @@ PM> Install-Package MimeBank
 License
 ----
 
-Free
+Apache License 2.0
