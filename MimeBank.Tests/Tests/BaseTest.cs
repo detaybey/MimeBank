@@ -1,10 +1,6 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NUnit.Framework;
 
 namespace MimeBank.Tests.Tests
 {
@@ -17,8 +13,7 @@ namespace MimeBank.Tests.Tests
         public BaseTest()
         {
             MimeChecker = new MimeChecker();
-            SolutionPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;                      
+            SolutionPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
         }
-
     }
 }

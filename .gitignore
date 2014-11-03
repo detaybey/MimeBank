@@ -1,8 +1,5 @@
-.DS_Store
-
-MimeBank/packages/*
-/*.suo
-/*/bin
-/*/obj
-/*/Properties
-/*/*.user
+packages/
+bin/
+obj/
+*.suo
+*.user

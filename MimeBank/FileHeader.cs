@@ -1,37 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MimeBank
 {
     /// <summary>
-    /// This is a data structure for holding the header byte sequences of each file format 
+    /// This is a data structure for holding the header byte sequences of each file format
     /// </summary>
     public class FileHeader
     {
-        public const string hex = "0123456789ABCDEF?";
-
+        private const int skipValue = -1;
         // The enum type of the file
-        public FileType Type { get; set; }
+        public FileType Type { get; private set; }
 
         // Extension of the file
-        public string Extension { get; set; }       
+        public string Extension { get; private set; }
 
         // Byte sequence in hex string delimeted with space
         // if there are unpredicted bytes in the sequence, they can be defined using ??
         // for example WAV files have their 5th to 8th bytes different for each file
-        // so in it's definition, the header bytes are as follows 
+        // so in it's definition, the header bytes are as follows
         // "52 49 46 46 ?? ?? ?? ?? 57 41 56 45 66 6D 74 20"
+        protected int[] Header { get; private set; }
 
-        public string Header { get; set; }         
+        public int HeaderLength { get { return Header.Length; } }
 
-        public FileHeader(FileType type, string ext, string data)
+        public FileHeader(FileType type, string extension, string header)
         {
             this.Type = type;
-            this.Extension = ext;
-            this.Header = data;
+            this.Extension = extension;
+            this.Header = parsePattern(header);
+        }
+
+        private int[] parsePattern(string header)
+        {
+            const char skipChar = '?';
+            const string skipMarker = "??";
+            return header.Split(' ')
+                .Select(part =>
+                {
+                    if (part == skipMarker)
+                    {
+                        return skipValue;
+                    }
+                    if (part[0] == skipChar || part[1] == skipChar)
+                    {
+                        return -1 * Convert.ToInt32(part.Replace(skipChar, '0'), 16);
+                    }
+                    return Convert.ToInt32(part, 16);
+                })
+                .ToArray();
         }
 
         /// <summary>
@@ -41,28 +58,30 @@ namespace MimeBank
         /// <returns>true if the type is correct</returns>
         public bool Check(byte[] buffer)
         {
-            var index = 0;
-            foreach (var bytestring in Header.Split(' '))
+            int headerLength = Header.Length;
+            if (headerLength > buffer.Length)
             {
-                var hi = hex.IndexOf(bytestring[0]) * 16;
-                var lo = hex.IndexOf(bytestring[1]);
-                int check = buffer[index];
-                if (!bytestring.Contains("?"))
+                return false;
+            }
+            for (int i = 0; i < headerLength; i++)
+            {
+                int headerValue = Header[i];
+                if (headerValue == skipValue)
                 {
-                    var value = hi + lo;
-                    if (check != value)
+                    continue;
+                }
+                if (headerValue < 0)
+                {
+                    byte b = (byte)(-1 * headerValue);
+                    if ((buffer[i] & b) != b)
                     {
                         return false;
                     }
                 }
-                else
+                else if (buffer[i] != headerValue)
                 {
-                    if (bytestring != "??" && (check < hi || check > hi + lo))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                index += 1;
             }
             return true;
         }
