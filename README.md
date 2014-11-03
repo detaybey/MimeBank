@@ -1,7 +1,7 @@
 MimeBank
 =========
 
-MimeBank is a file-type checker for c#.
+MimeBank is a file-type checker for dotnet.
 
 Users upload stuff to your server. You should be checking the file type of the uploaded file. Don't take the file extension for granted. Make sure the JPG is a JPG.
 
