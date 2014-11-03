@@ -1,5 +1,8 @@
+.DS_Store
 packages/
 bin/
 obj/
 *.suo
 *.user
+*.ncrunch*
+_NCrunch*
