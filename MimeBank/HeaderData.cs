@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MimeBank
 {
     public static class HeaderData
     {
-
         /// <summary>
-        /// The initial list of file types 
+        /// The initial list of file types
         /// </summary>
         /// <returns></returns>
-       
 
         public static List<FileHeader> GetList()
         {

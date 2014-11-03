@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MimeBank
+﻿namespace MimeBank
 {
     /// <summary>
-    /// This is a data structure for holding the header byte sequences of each file format 
+    /// This is a data structure for holding the header byte sequences of each file format
     /// </summary>
     public class FileHeader
     {
@@ -17,15 +11,15 @@ namespace MimeBank
         public FileType Type { get; set; }
 
         // Extension of the file
-        public string Extension { get; set; }       
+        public string Extension { get; set; }
 
         // Byte sequence in hex string delimeted with space
         // if there are unpredicted bytes in the sequence, they can be defined using ??
         // for example WAV files have their 5th to 8th bytes different for each file
-        // so in it's definition, the header bytes are as follows 
+        // so in it's definition, the header bytes are as follows
         // "52 49 46 46 ?? ?? ?? ?? 57 41 56 45 66 6D 74 20"
 
-        public string Header { get; set; }         
+        public string Header { get; set; }
 
         public FileHeader(FileType type, string ext, string data)
         {
