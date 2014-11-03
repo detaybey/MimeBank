@@ -21,6 +21,14 @@ Usage
   Assert.AreEqual(header.Extension, "jpg", "File format should be a jpg");
 ```
 
+NuGet
+--------------
+
+To install MimeBank, run the following command in the Package Manager Console
+```sh
+PM> Install-Package MimeBank
+```
+
 License
 ----
 
