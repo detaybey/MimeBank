@@ -1,18 +1,10 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MimeBank.Tests.Tests
 {
- 
     [TestFixture]
     public class ImageTests : BaseTest
     {
-
         [Test]
         public void Jpeg()
         {

@@ -47,6 +47,7 @@
     <Compile Include="Tests\AudioTests.cs" />
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\ImageTests.cs" />
+    <Compile Include="Tests\PartialSignatureTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Files\test_file_gif" />

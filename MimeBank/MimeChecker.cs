@@ -14,36 +14,20 @@ namespace MimeBank
     /// </summary>
     public class MimeChecker
     {
-        private const int maxBufferSize = 256;
-
-        private static List<FileHeader> list { get; set; }
-        private List<FileHeader> List
-        {
-            get
-            {
-                if (list == null)
-                {
-                    list = HeaderData.GetList();
-                }
-                return list;
-            }
-        }
-        private byte[] Buffer;
-
         public MimeChecker()
         {
-            Buffer = new byte[maxBufferSize];
         }
 
         public FileHeader GetFileHeader(Stream stream)
         {
-            stream.Read(Buffer, 0, maxBufferSize);
-            return this.List.FirstOrDefault(mime => mime.Check(Buffer));
+            var buffer = new byte[HeaderData.MaxBufferSize];
+            stream.Read(buffer, 0, HeaderData.MaxBufferSize);
+            return HeaderData.Items.FirstOrDefault(mime => mime.Check(buffer));
         }
 
         public FileHeader GetFileHeader(string file)
         {
-            using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (var stream = File.OpenRead(file))
             {
                 return GetFileHeader(stream);
             }
