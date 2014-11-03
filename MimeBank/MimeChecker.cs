@@ -36,10 +36,6 @@ namespace MimeBank
 
         public FileHeader GetFileHeader(string file)
         {
-            if (!System.IO.File.Exists(file))
-            {
-                throw new Exception("File was not found on path " + file);
-            }
             using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
                 fs.Read(Buffer, 0, 256);
