@@ -2,7 +2,6 @@
 * Programmed by Umut Celenli umut@celenli.com
 */
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +14,8 @@ namespace MimeBank
     /// </summary>
     public class MimeChecker
     {
+        private const int maxBufferSize = 256;
+
         private static List<FileHeader> list { get; set; }
         private List<FileHeader> List
         {
@@ -31,16 +32,16 @@ namespace MimeBank
 
         public MimeChecker()
         {
-            Buffer = new byte[256];
+            Buffer = new byte[maxBufferSize];
         }
 
         public FileHeader GetFileHeader(string file)
         {
             using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
-                fs.Read(Buffer, 0, 256);
+                fs.Read(Buffer, 0, maxBufferSize);
             }
-            return this.List.FirstOrDefault(mime => mime.Check(Buffer) == true);
+            return this.List.FirstOrDefault(mime => mime.Check(Buffer));
         }
     }
 }
