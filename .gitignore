@@ -1,0 +1,9 @@
+.DS_Store
+
+
+/packages/*
+/*.suo
+/*/bin
+/*/obj
+/*/Properties
+/*/*.user
