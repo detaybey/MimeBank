@@ -9,7 +9,7 @@ Users upload stuff to your server. You should be checking the file type of the u
 Version
 ----
 
-1.0.0
+1.0.1
 
 Usage
 --------------
