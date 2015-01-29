@@ -14,7 +14,7 @@ Version
 Usage
 --------------
 
-```sh
+```c#
   MimeChecker mimeChecker = new MimeChecker();
   FileHeader header = mimeChecker.GetFileHeader("PATH_TO_FILE");
   Assert.AreEqual(header.Type, FileType.Image, "File should be an image");
