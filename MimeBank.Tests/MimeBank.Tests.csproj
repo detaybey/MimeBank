@@ -48,17 +48,24 @@
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\ImageTests.cs" />
     <Compile Include="Tests\PartialSignatureTest.cs" />
+    <Compile Include="Tests\VideoTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Files\test_file_avi" />
+    <None Include="Files\test_file_flv" />
     <None Include="Files\test_file_gif" />
     <None Include="Files\test_file_jpg" />
+    <None Include="Files\test_file_mov" />
     <None Include="Files\test_file_mp3" />
+    <None Include="Files\test_file_mp4" />
+    <None Include="Files\test_file_mpg" />
     <None Include="Files\test_file_ogg" />
     <None Include="Files\test_file_png" />
     <None Include="Files\test_file_ra" />
     <None Include="Files\test_file_wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Files\test_file_wmv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
