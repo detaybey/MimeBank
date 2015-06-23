@@ -10,9 +10,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_wav");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Audio, "Should be an audio file");
-            Assert.AreEqual(header.Extension, "wav", "File format should be wav");
+			 DoTests(header, FileType.Audio, "wav");
         }
 
         [Test]
@@ -20,9 +18,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mp3");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Audio, "Should be an audio file");
-            Assert.AreEqual(header.Extension, "mp3", "File format should be mp3");
+			 DoTests(header, FileType.Audio, "mp3");
         }
 
         [Test]
@@ -30,9 +26,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_ogg");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Audio, "Should be an audio file");
-            Assert.AreEqual(header.Extension, "ogg", "File format should be ogg");
+			 DoTests(header, FileType.Audio, "ogg");
         }
 
         [Test]
@@ -40,9 +34,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_ra");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Audio, "Should be an audio file");
-            Assert.AreEqual(header.Extension, "ra", "File format should be ra");
+			 DoTests(header, FileType.Audio, "ra");
         }
     }
 }

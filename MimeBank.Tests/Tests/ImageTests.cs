@@ -10,9 +10,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_jpg");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Image, "File should be an image");
-            Assert.AreEqual(header.Extension, "jpg", "File format should be a jpg");
+			 DoTests(header, FileType.Image, "jpg");
         }
 
         [Test]
@@ -20,9 +18,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_png");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Image, "File should be an image");
-            Assert.AreEqual(header.Extension, "png", "File format should be a png");
+			 DoTests(header, FileType.Image, "png");
         }
 
         [Test]
@@ -30,9 +26,7 @@ namespace MimeBank.Tests.Tests
         {
             var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_gif");
 
-            Assert.NotNull(header, "File header returned null");
-            Assert.AreEqual(header.Type, FileType.Image, "File should be an image");
-            Assert.AreEqual(header.Extension, "gif", "File format should be a gif");
+			 DoTests(header, FileType.Image, "gif");
         }
     }
 }
