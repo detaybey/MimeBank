@@ -55,6 +55,7 @@
     <None Include="Files\test_file_flv" />
     <None Include="Files\test_file_gif" />
     <None Include="Files\test_file_jpg" />
+    <None Include="Files\test_file_mkv" />
     <None Include="Files\test_file_mov" />
     <None Include="Files\test_file_mp3" />
     <None Include="Files\test_file_mp4" />
