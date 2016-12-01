@@ -53,5 +53,12 @@ namespace MimeBank.Tests.Tests
 		 DoTests(header, FileType.Video, "flv");
 	  }
 
+      [Test]
+      public void Mkv()
+      {
+          var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mkv");
+
+          DoTests(header, FileType.Video, "mkv");
+      }
    }
 }

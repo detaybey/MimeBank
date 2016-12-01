@@ -64,6 +64,7 @@ namespace MimeBank
             new FileHeader(FileType.Video, "wmf", "01 00 09 00 00 03"),
             new FileHeader(FileType.Video, "wmv", "30 26 B2 75 8E 66 CF 11 A6 D9 00 AA 00 62 CE 6C"),
             new FileHeader(FileType.Video, "avi", "52 49 46 46 ?? ?? ?? ?? 41 56 49 20 4C 49 53 54"),
+            new FileHeader(FileType.Video, "mkv", "1A 45 DF A3"),
         };
     }
 }
