@@ -19,6 +19,9 @@ Usage
   FileHeader header = mimeChecker.GetFileHeader("PATH_TO_FILE");
   Assert.AreEqual(header.Type, FileType.Image, "File should be an image");
   Assert.AreEqual(header.Extension, "jpg", "File format should be a jpg");
+  
+  // or simply a boolean check
+  var check = MimeChecker.check("PATH_TO_FILE", FileType.EXPECTED_FILE_TYPE); 
 ```
 
 NuGet
