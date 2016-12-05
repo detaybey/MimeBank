@@ -9,8 +9,11 @@ namespace MimeBank
     public class FileHeader
     {
         private const int skipValue = -1;
-        // The enum type of the file
-        public FileType Type { get; private set; }
+		private const char skipChar = '?';
+		private const string skipMarker = "??";
+
+		// The enum type of the file
+		public FileType Type { get; private set; }
 
         // Extension of the file
         public string Extension { get; private set; }
@@ -33,8 +36,6 @@ namespace MimeBank
 
         private int[] parsePattern(string header)
         {
-            const char skipChar = '?';
-            const string skipMarker = "??";
             return header.Split(' ')
                 .Select(part =>
                 {
@@ -63,7 +64,7 @@ namespace MimeBank
             {
                 return false;
             }
-            for (int i = 0; i < headerLength; i++)
+	        for (int i = 0; i < headerLength; i++)
             {
                 int headerValue = Header[i];
                 if (headerValue == skipValue)

@@ -1,40 +1,20 @@
 ﻿using NUnit.Framework;
 
-namespace MimeBank.Tests.Tests
+namespace MimeBank.Tests
 {
     [TestFixture]
     public class AudioTests : BaseTest
     {
         [Test]
-        public void Wav()
+		[TestCase("wav")]
+		[TestCase("mp3")]
+		[TestCase("ogg")]
+		[TestCase("ra")]
+		public void TestAudioFile(string type)
         {
-            var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_wav");
-
-			 DoTests(header, FileType.Audio, "wav");
-        }
-
-        [Test]
-        public void Mp3()
-        {
-            var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mp3");
-
-			 DoTests(header, FileType.Audio, "mp3");
-        }
-
-        [Test]
-        public void Ogg()
-        {
-            var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_ogg");
-
-			 DoTests(header, FileType.Audio, "ogg");
-        }
-
-        [Test]
-        public void Ra()
-        {
-            var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_ra");
-
-			 DoTests(header, FileType.Audio, "ra");
+			var path = SolutionPath + "test_file_" + type;
+			var header = MimeChecker.GetFileHeader(path);
+			DoTests(header, FileType.Audio, type);
         }
     }
 }

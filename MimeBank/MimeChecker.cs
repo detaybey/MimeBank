@@ -32,5 +32,13 @@ namespace MimeBank
                 return GetFileHeader(stream);
             }
         }
+
+		// a simple static method for simpler checks
+		public static bool Check(string file, FileType expectedType)
+		{
+			var checker = new MimeChecker();
+			var header = checker.GetFileHeader(file);
+			return header.Type == expectedType;
+		}
     }
 }

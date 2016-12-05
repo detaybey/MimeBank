@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using NUnit.Framework;
 
-namespace MimeBank.Tests.Tests
+namespace MimeBank.Tests
 {
     [TestFixture]
     public class PartialSignatureTest

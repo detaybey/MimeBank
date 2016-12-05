@@ -2,18 +2,24 @@
 using System.IO;
 using NUnit.Framework;
 
-namespace MimeBank.Tests.Tests
+namespace MimeBank.Tests
 {
     public class BaseTest
     {
         public MimeChecker MimeChecker { get; set; }
         public string SolutionPath { get; set; }
 
+		
         public BaseTest()
         {
             MimeChecker = new MimeChecker();
-            SolutionPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
+			SolutionPath = BaseTest.GetFilesPath(); 
         }
+
+		public static string GetFilesPath()
+		{
+			return Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName + "/Files/";
+		}
 
 		protected void DoTests(FileHeader header, FileType expectedFileType, string expectedExtension)
 		{

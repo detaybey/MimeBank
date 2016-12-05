@@ -1,64 +1,24 @@
 ﻿using NUnit.Framework;
 
-namespace MimeBank.Tests.Tests
+namespace MimeBank.Tests
 {
    [TestFixture]
    public class VideoTests : BaseTest
    {
-	  [Test]
-	  public void Avi()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_avi");
-
-		 DoTests(header, FileType.Video, "avi");
-	  }
-
-	  [Test]
-	  public void Mpg()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mpg");
-
-		 DoTests(header, FileType.Video, "mpg");
-	  }
-
-	  [Test]
-	  public void Mp4()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mp4");
-
-		 DoTests(header, FileType.Video, "mp4");
-	  }
-
-	  [Test]
-	  public void Wmv()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_wmv");
-
-		 DoTests(header, FileType.Video, "wmv");
-	  }
-
-	  [Test]
-	  public void Mov()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mov");
-
-		 DoTests(header, FileType.Video, "mov");
-	  }
-
-	  [Test]
-	  public void Flv()
-	  {
-		 var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_flv");
-
-		 DoTests(header, FileType.Video, "flv");
-	  }
-
-      [Test]
-      public void Mkv()
-      {
-          var header = MimeChecker.GetFileHeader(SolutionPath + "/Files/test_file_mkv");
-
-          DoTests(header, FileType.Video, "mkv");
-      }
+		[Test]
+		[TestCase("avi")]
+		[TestCase("mpg")]
+		[TestCase("mp4")]
+		[TestCase("wmv")]
+		[TestCase("avi")]
+		[TestCase("mov")]
+		[TestCase("flv")]
+		[TestCase("mkv")]
+		public void TestVideoFile(string type)
+		{
+			var path = SolutionPath + "test_file_" + type;
+			var header = MimeChecker.GetFileHeader(path);
+			DoTests(header, FileType.Video, type);
+		}
    }
 }
