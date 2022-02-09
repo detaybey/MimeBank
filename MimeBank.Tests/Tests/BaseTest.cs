@@ -1,54 +1,42 @@
-﻿using System;
+﻿using NUnit.Framework;
 using System.IO;
-using NUnit.Framework;
+using System.Reflection;
 
 namespace MimeBank.Tests
 {
-    public class BaseTest
-    {
-        public MimeChecker MimeChecker { get; set; }
-        public string SolutionPath { get; set; }
+	public class BaseTest
+	{
+		public MimeChecker MimeChecker { get; set; }
 
+		public string AssemblyPath { get; set; }
 		
-        public BaseTest()
-        {
-            MimeChecker = new MimeChecker();
-			SolutionPath = BaseTest.GetFilesPath(); 
-        }
+		public BaseTest()
+		{
+			MimeChecker = new MimeChecker();
+			AssemblyPath = GetFilesPath(); 
+		}
 
 		public static string GetFilesPath()
 		{
-			return Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName + "/Files/";
+			var testDir = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
+			return Path.Combine(testDir, "Files");
 		}
 
-		protected void DoTests(FileHeader header, FileType expectedFileType, string expectedExtension)
+		protected static void DoTests(FileHeader header, FileType expectedFileType, string expectedExtension)
 		{
-		   string fileTypeErrorMessage;
-		   switch (expectedFileType)
-		   {
-			  default:
-			  case FileType.Other:
-				 fileTypeErrorMessage = "Unknown file type";
-				 break;
-			  case FileType.Image:
-				 fileTypeErrorMessage = "Should be an image file";
-				 break;
-			  case FileType.Video:
-				 fileTypeErrorMessage = "Should be a video file";
-				 break;
-			  case FileType.Audio:
-				 fileTypeErrorMessage = "Should be an audio file";
-				 break;
-			  case FileType.Swf:
-				 fileTypeErrorMessage = "Should be a flash file";
-				 break;
-		   }
-		
-		   var extensionErrorMessage = "File format should be " + expectedExtension;
+			string fileTypeErrorMessage = expectedFileType switch
+			{
+				FileType.Image => "Should be an image file",
+				FileType.Video => "Should be a video file",
+				FileType.Audio => "Should be an audio file",
+				FileType.Swf => "Should be a flash file",
+				_ => "Unknown file type",
+			};
+			var extensionErrorMessage = "File format should be " + expectedExtension;
 		
 		   Assert.NotNull(header, "File header returned null");
 		   Assert.AreEqual(header.Type, expectedFileType, fileTypeErrorMessage);
 		   Assert.AreEqual(header.Extension, expectedExtension, extensionErrorMessage);
 		}
-   }
+	}
 }

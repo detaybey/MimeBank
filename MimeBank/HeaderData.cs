@@ -5,19 +5,7 @@ namespace MimeBank
 {
 	public static class HeaderData
 	{
-		private static int maxBufferSize = 0;
-
-		public static int MaxBufferSize
-		{
-			get
-			{
-				if (maxBufferSize == 0)
-				{
-					maxBufferSize = Items.Max(h => h.HeaderLength);
-				}
-				return maxBufferSize;
-			}
-		}
+		public static int MaxBufferSize => Items.Max(h => h.HeaderLength);
 
 		public static List<FileHeader> Items = new List<FileHeader>()
 		{
@@ -41,11 +29,11 @@ namespace MimeBank
 			new FileHeader(FileType.Image, "tif", "4D 4D 00 2A"),
 			new FileHeader(FileType.Image, "tif", "4D 4D 00 2B"),
 
-			new FileHeader(FileType.Swf, "swf", "46 57 53"),    //FWS - uncompressed SWF
-            new FileHeader(FileType.Swf, "swf", "43 57 53"),    //CWS - compressed SWF by using the ZLIB open standard
-            new FileHeader(FileType.Swf, "swf", "5A 57 53"),    //ZWS - compressed SWF by using the LZMA open standard
+			new FileHeader(FileType.Swf, "swf", "46 57 53"),	//FWS - uncompressed SWF
+			new FileHeader(FileType.Swf, "swf", "43 57 53"),	//CWS - compressed SWF by using the ZLIB open standard
+			new FileHeader(FileType.Swf, "swf", "5A 57 53"),	//ZWS - compressed SWF by using the LZMA open standard
 
-            new FileHeader(FileType.Video, "flv", "46 4C 56 01"),
+			new FileHeader(FileType.Video, "flv", "46 4C 56 01"),
 			new FileHeader(FileType.Video, "3gp", "00 00 00 ?? 66 74 79 70 33 67 70"),
 			new FileHeader(FileType.Video, "mp4", "00 00 00 ?? 66 74 79 70"),
 			new FileHeader(FileType.Video, "mp4", "66 74 79 70 33 67 70 35"),
