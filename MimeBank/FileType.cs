@@ -1,11 +1,11 @@
 ﻿namespace MimeBank
 {
-    public enum FileType
-    {
-        Other,
-        Image,
-        Video,
-        Audio,
-        Swf,
-    }
+	public enum FileType
+	{
+		Other,
+		Image,
+		Video,
+		Audio,
+		Swf,
+	}
 }
