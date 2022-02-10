@@ -6,10 +6,12 @@ MimeBank is a file-type checker for dotnet.
 Users upload stuff to your server. You should be checking the file type of the uploaded file. Don't take the file extension for granted. Make sure the JPG is a JPG.
 
 
-Version
+Versions
 ----
 
-1.0.2
+1.0.2 (legacy)
+
+2.0.0 (netstandard2.1;net6.0)  
 
 Usage
 --------------
@@ -31,6 +33,16 @@ To install MimeBank, run the following command in the Package Manager Console
 ```sh
 PM> Install-Package MimeBank
 ```
+
+Thanks
+----
+[ScottMB](https://github.com/scottmb) (MKV Support)
+
+[Zach Meyers](https://github.com/zach-meyers) (net6.0 Support)
+
+[gokceyucel](https://github.com/gokceyucel) (fixes & additional tests)
+
+[SSG](https://github.com/ssg) (fixes)
 
 License
 ----
