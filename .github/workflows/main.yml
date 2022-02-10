@@ -27,13 +27,13 @@ jobs:
         run: dotnet restore
 
       - name: Build dotnet 
-        run: dotnet build MimeBank.sln --configuration release /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.AssemblySemVer }} /p:InformationalVersion=${{ steps.gitversion.outputs.InformationalVersion }} --no-restore
+        run: dotnet build MimeBank.sln --configuration release
 
       - name: Run Tests
-        run: dotnet test --configuration Release /p:Version=${{ steps.gitversion.outputs.AssemblySemVer }} --no-build --verbosity normal
+        run: dotnet test --configuration Release --no-build --verbosity normal
 
       - name: Package nuget
-        run: dotnet pack MimeBank.sln --configuration release -o:package /p:PackageVersion=${{ steps.gitversion.outputs.AssemblySemVer }}
+        run: dotnet pack MimeBank.sln --configuration release
       
       - uses: brandedoutcast/publish-nuget@v2.5.5
         with:
