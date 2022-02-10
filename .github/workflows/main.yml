@@ -34,7 +34,7 @@ jobs:
 
       - name: Package nuget
         run: dotnet pack MimeBank.sln --configuration release
-      
+
       - uses: brandedoutcast/publish-nuget@v2.5.5
         with:
             # Filepath of the project to be packaged, relative to root of repository
@@ -43,4 +43,4 @@ jobs:
             PACKAGE_NAME: MimeBank
             # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
             VERSION_STATIC: 2.0.0
-            NUGET_KEY: oy2ksjqbqh425ytvfsvqpn225mxi2jiuflqnstj5twzhmi
+            NUGET_KEY: ${{ secrets.NUGET_KEY }}
