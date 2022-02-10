@@ -6,3 +6,4 @@ obj/
 *.user
 *.ncrunch*
 _NCrunch*
+.idea
