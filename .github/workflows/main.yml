@@ -77,8 +77,10 @@ jobs:
       - name: Package nuget
         run: dotnet pack MimeBank.sln --configuration release
 
-      - uses: actions/setup-dotnet@v3
-      - name: Publish the package to nuget.org
-        run: dotnet nuget push */bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_KEY }}
+      - name: publish on version change
+        id: publish_nuget
+        uses: alirezanet/publish-nuget@v3.1.0
+        with:
+          PROJECT_FILE_PATH: MimeBank/MimeBank.csproj
+          PACKAGE_NAME: MimeBank
+          NUGET_KEY: ${{secrets.NUGET_KEY}}
