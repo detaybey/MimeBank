@@ -34,11 +34,11 @@ jobs:
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
+        id: test-results
         if: always()
         with:
           files: |
             ./**/test-results.xml
-
 
       - name: Set badge color
         shell: bash
