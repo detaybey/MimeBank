@@ -15,6 +15,8 @@ Versions
 
 2.0.0 (netstandard2.1;net6.0)  
 
+2.0.1 (netstandard2.1;net6.0;net7.0)  
+
 Usage
 --------------
 
