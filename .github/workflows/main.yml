@@ -30,16 +30,14 @@ jobs:
         run: dotnet build MimeBank.sln --configuration release
 
       - name: Run Tests
-        run: dotnet test --configuration Release --no-build --verbosity normal --logger:"nunit;LogFilePath=test-resuls/result.xml"
+        run: dotnet test --configuration Release --no-build --verbosity normal --logger:"nunit;LogFilePath=test-results.xml"
 
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json
+            ./**/test-results.xml
 
       - name: Package nuget
         run: dotnet pack MimeBank.sln --configuration release
