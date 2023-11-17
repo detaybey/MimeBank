@@ -1,3 +1,5 @@
+![github workflow](https://github.com/detaybey/MimeBank/actions/workflows/main.yml/badge.svg)
+
 MimeBank
 =========
 
