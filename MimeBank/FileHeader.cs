@@ -8,9 +8,9 @@ namespace MimeBank
 	/// </summary>
 	public class FileHeader
 	{
-		private const int skipValue = -1;
-		private const char skipChar = '?';
-		private const string skipMarker = "??";
+		private const int SkipValue = -1;
+		private const char SkipChar = '?';
+		private const string SkipMarker = "??";
 
 		/// <summary>
 		/// The enum type of the file.
@@ -46,10 +46,10 @@ namespace MimeBank
 		private static int[] ParsePattern(string header) =>
 			header.Split(' ')
 				.Select(part =>
-					part == skipMarker
-						? skipValue
-						: part[0] == skipChar || part[1] == skipChar
-							? -1 * Convert.ToInt32(part.Replace(skipChar, '0'), 16)
+					part == SkipMarker
+						? SkipValue
+						: part[0] == SkipChar || part[1] == SkipChar
+							? -1 * Convert.ToInt32(part.Replace(SkipChar, '0'), 16)
 							: Convert.ToInt32(part, 16))
 				.ToArray();
 
@@ -60,23 +60,23 @@ namespace MimeBank
 		/// <returns>true if the type is correct</returns>
 		public bool Check(byte[] buffer)
 		{
-			int headerLength = Header.Length;
+			var headerLength = Header.Length;
 			if (headerLength > buffer.Length)
 			{
 				return false;
 			}
 
-			for (int i = 0; i < headerLength; i++)
+			for (var i = 0; i < headerLength; i++)
 			{
-				int headerValue = Header[i];
-				if (headerValue == skipValue)
+				var headerValue = Header[i];
+				if (headerValue == SkipValue)
 				{
 					continue;
 				}
 
 				if (headerValue < 0)
 				{
-					byte b = (byte)(-1 * headerValue);
+					var b = (byte)(-1 * headerValue);
 					if ((buffer[i] & b) != b)
 					{
 						return false;

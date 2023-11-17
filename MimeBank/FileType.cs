@@ -7,5 +7,9 @@
 		Video,
 		Audio,
 		Swf,
+		Compressed,
+		Document,
+		Executable,
+		Database
 	}
 }

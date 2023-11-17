@@ -17,14 +17,14 @@ namespace MimeBank
 
 		public async Task<FileHeader> GetFileHeaderAsync(string file)
 		{
-			using var stream = File.OpenRead(file);
+			await using var stream = File.OpenRead(file);
 			return await GetFileHeaderAsync(stream);
 		}
 
 		public async Task<FileHeader> GetFileHeaderAsync(Stream stream)
 		{
 			var buffer = new byte[HeaderData.MaxBufferSize];
-			await stream.ReadAsync(buffer, 0, HeaderData.MaxBufferSize);
+			var readAsync = await stream.ReadAsync(buffer, 0, HeaderData.MaxBufferSize);
 
 			return HeaderData.Items.FirstOrDefault(mime => mime.Check(buffer));
 		}
@@ -38,7 +38,7 @@ namespace MimeBank
 		public FileHeader GetFileHeader(Stream stream)
 		{
 			var buffer = new byte[HeaderData.MaxBufferSize];
-			stream.Read(buffer, 0, HeaderData.MaxBufferSize);
+			var read = stream.Read(buffer, 0, HeaderData.MaxBufferSize);
 
 			return HeaderData.Items.FirstOrDefault(mime => mime.Check(buffer));
 		}

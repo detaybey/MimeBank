@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>MimeBank</id>
-    <version>1.0.2</version>
-    <authors>Umut Oguz Çelenli</authors>
-    <owners>Umut Oguz Çelenli</owners>
+    <version>1.0.3</version>
+    <authors>Umut Oguz Ã‡elenli</authors>
+    <owners>Umut Oguz Ã‡elenli</owners>
     <projectUrl>https://github.com/detaybey/MimeBank</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MimeBank is a file-type checker for dotnet.</description>
-    <releaseNotes>Added MKV support (thanks ScottMB), Updated tests, Added a static check() helper method for ease of use.</releaseNotes>
+    <releaseNotes>Added support for more formats</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Mime File Check Header</tags>
     <dependencies>
