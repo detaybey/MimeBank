@@ -42,6 +42,7 @@ To install MimeBank, run the following command in the Package Manager Console
 PM> Install-Package MimeBank
 ```
 
+
 Thanks
 ----
 [ScottMB](https://github.com/scottmb) (MKV Support)
@@ -54,5 +55,4 @@ Thanks
 
 License
 ----
-
 Apache License 2.0
